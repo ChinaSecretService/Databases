@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS Plant;
 DROP TABLE IF EXISTS Botanical_garden;
-DROP TABLE IF EXISTS Sub-garden;
+DROP TABLE IF EXISTS Sub_garden;
 
 CREATE TABLE Plant(
     p_id       INTEGER,
@@ -16,7 +16,7 @@ CREATE TABLE Botanical_garden(
     PRIMARY KEY(loc)
 );
 
-CREATE TABLE Sub-garden(
+CREATE TABLE Sub_garden(
     loc        TEXT
     theme      TEXT
     FOREIGN KEY (loc) REFERENCES Botanical_garden(loc) ON DELETE CASCADE
@@ -26,37 +26,37 @@ INSERT INTO Botanical_garden VALUES ('Leiden');
 INSERT INTO Botanical_garden VALUES ('Amsterdam');
 INSERT INTO Botanical_garden VALUES ('Delft');
 
-INSERT INTO Sub-garden VALUES ('Leiden','Winter Garden');
-INSERT INTO Sub-garden VALUES ('Leiden','Clusius Garden');
-INSERT INTO Sub-garden VALUES ('Leiden','Orangery');
-INSERT INTO Sub-garden VALUES ('Leiden','Tropical glasshouses');
-INSERT INTO Sub-garden VALUES ('Leiden','Geophyte garden and cool house');
-INSERT INTO Sub-garden VALUES ('Leiden','Rose Garden');
-INSERT INTO Sub-garden VALUES ('Leiden','Systematic Garden');
-INSERT INTO Sub-garden VALUES ('Leiden','Von Siebold Memorial Garden');
-INSERT INTO Sub-garden VALUES ('Leiden','Arboretum');
-INSERT INTO Sub-garden VALUES ('Leiden','Chinese Herb Garden');
-INSERT INTO Sub-garden VALUES ('Leiden','Fern Garden');
-INSERT INTO Sub-garden VALUES ('Leiden','Observatory Garden');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Medicinal Plant Section');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Succulent Dome');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Japanese Garden');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Aquatic Plants Zone');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Palm House');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Woodland Edge');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Orchid Pavilion');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Permaculture Plot');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Edible Garden');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Sand Dune Garden');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Vertical Garden');
-INSERT INTO Sub-garden VALUES ('Amsterdam','Mediterranean Zone');
-INSERT INTO Sub-garden VALUES ('Delft','Alpine Garden');
-INSERT INTO Sub-garden VALUES ('Delft','Experimental Greenhouse');
-INSERT INTO Sub-garden VALUES ('Delft','Pollinator Meadow');
-INSERT INTO Sub-garden VALUES ('Delft','Rare Species Bed');
-INSERT INTO Sub-garden VALUES ('Delft','Bonsai Yard');
-INSERT INTO Sub-garden VALUES ('Delft','Moss & Lichen Niche');
-INSERT INTO Sub-garden VALUES ('Delft','Bamboo Walk');
+INSERT INTO Sub_garden VALUES ('Leiden','Winter Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Clusius Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Orangery');
+INSERT INTO Sub_garden VALUES ('Leiden','Tropical glasshouses');
+INSERT INTO Sub_garden VALUES ('Leiden','Geophyte garden and cool house');
+INSERT INTO Sub_garden VALUES ('Leiden','Rose Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Systematic Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Von Siebold Memorial Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Arboretum');
+INSERT INTO Sub_garden VALUES ('Leiden','Chinese Herb Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Fern Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Observatory Garden');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Medicinal Plant Section');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Succulent Dome');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Japanese Garden');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Aquatic Plants Zone');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Palm House');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Woodland Edge');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Orchid Pavilion');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Permaculture Plot');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Edible Garden');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Sand Dune Garden');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Vertical Garden');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Mediterranean Zone');
+INSERT INTO Sub_garden VALUES ('Delft','Alpine Garden');
+INSERT INTO Sub_garden VALUES ('Delft','Experimental Greenhouse');
+INSERT INTO Sub_garden VALUES ('Delft','Pollinator Meadow');
+INSERT INTO Sub_garden VALUES ('Delft','Rare Species Bed');
+INSERT INTO Sub_garden VALUES ('Delft','Bonsai Yard');
+INSERT INTO Sub_garden VALUES ('Delft','Moss & Lichen Niche');
+INSERT INTO Sub_garden VALUES ('Delft','Bamboo Walk');
 
 INSERT INTO Plant (p_id, species, o_country, blooming, sub_garden) VALUES
 (100001, 'Ficus lyrata', 'Mexico', NULL, 'Winter Garden'),

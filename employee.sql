@@ -6,7 +6,7 @@ CREATE TABLE Employees (
     name TEXT NOT NULL,
     age INT,
     salary INT,
-    e_mail TEXT UNIQUE NOT NULL
+    e_mail TEXT UNIQUE NOT NULL,
 );
 
 

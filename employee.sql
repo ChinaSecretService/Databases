@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS Employees;
-    
---- Create Schema
+
 CREATE TABLE Employees (
     ssn CHAR(9) PRIMARY KEY(ssn),
     name TEXT NOT NULL,

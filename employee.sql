@@ -16,12 +16,13 @@ CREATE TABLE Researchers (
     season TEXT,
     university TEXT,
     FOREIGN KEY(ssn) REFERENCES Employees(ssn)
+);
 
 CREATE TABLE Gardeners (
     ssn INTEGER,
     seniority TEXT,
     FOREIGN KEY(ssn) REFERENCES Employees(ssn)
-    )
+);
 
 INSERT INTO Employees (ssn, name, age, salary, e_mail)
 VALUES

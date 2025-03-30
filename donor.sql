@@ -1,21 +1,8 @@
-CREATE DATABASE Donor;
-USE Donor;
+DROP TABLE IF EXISTS DonorTable;
 
-CREATE TABLE DonorTable (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
-DROP TABLE IF EXISTS Plant;
-DROP TABLE IF EXISTS Botanical_garden;
-DROP TABLE IF EXISTS Sub-garden;
-
-CREATE TABLE Plant(
-    p_id       INTEGER,
-    species    TEXT,
-    o_country  TEXT,
-    blooming   INTEGER,
-    sub-garden TEXT
-    PRIMARY KEY(p_id)
+CREATE TABLE DonorTable(
+    name    TEXT,
+    PRIMARY KEY(name)
 );
 
 INSERT INTO DonorTable (name) VALUES

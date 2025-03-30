@@ -9,6 +9,15 @@ CREATE TABLE Employees (
     PRIMARY KEY(ssn),
 );
 
+CREATE TABLE Researchers (
+    season TEXT,
+    university TEXT,
+    )
+
+CREATE TABLE Gardeners (
+    seniority TEXT,
+    )
+
 INSERT INTO Employees (ssn, name, age, salary, e_mail)
 VALUES
 (111111111, 'Angela Van Delft', 20, 95000, 'angela.vandelft@delftbgarden.nl'),

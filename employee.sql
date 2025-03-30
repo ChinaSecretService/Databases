@@ -1,11 +1,13 @@
 DROP TABLE IF EXISTS Employees;
-
+    
 CREATE TABLE Employees (
-    ssn CHAR(9) PRIMARY KEY(ssn),
-    name TEXT NOT NULL,
-    age INT,
-    salary INT,
-    e_mail TEXT UNIQUE NOT NULL,
+    ssn INTEGER,
+    name TEXT,
+    age INTEGER,
+    salary INTEGER,
+    e_mail TEXT,
+    PRIMARY KEY(ssn),
+
 );
 
 

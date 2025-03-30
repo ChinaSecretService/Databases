@@ -2,11 +2,11 @@ DROP TABLE IF EXISTS Employees;
     
 --- Create Schema
 CREATE TABLE Employees (
-    ssn CHAR(9) PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    age INT CHECK (age > 15),
-    salary DECIMAL(10, 2),
-    e_mail VARCHAR(100) UNIQUE NOT NULL
+    ssn CHAR(9) PRIMARY KEY(ssn),
+    name TEXT NOT NULL,
+    age INT,
+    salary INT,
+    e_mail TEXT UNIQUE NOT NULL
 );
 
 

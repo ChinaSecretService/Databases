@@ -1,3 +1,5 @@
+sqlite> PRAGMA foreign_keys = ON;
+
 DROP TABLE IF EXISTS Donor_table;
 DROP TABLE IF EXISTS Recieves_donation;
 
@@ -3781,7 +3783,6 @@ INSERT INTO Plant (p_id, species, o_country, blooming, sub_garden) VALUES
 (103681, 'Ficus lyrata', 'China', 1, 'Bamboo Walk'),
 ;
 
-sqlite> PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS Employees;
 DROP TABLE IF EXISTS Gardeners;

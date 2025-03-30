@@ -1,11 +1,21 @@
-DROP TABLE IF EXISTS DonorTable;
+DROP TABLE IF EXISTS Donor_table;
+DROP TABLE IF EXISTS Recieves_donation;
 
-CREATE TABLE DonorTable(
+CREATE TABLE Donor_table(
     name    TEXT,
     PRIMARY KEY(name)
 );
 
-INSERT INTO DonorTable (name) VALUES
+CREATE TABLE Recieves_donation(
+    location TEXT,
+    name TEXT,
+    amount INTEGER,
+    PRIMARY KEY (location, name, amount),
+    FOREIGN KEY (location) REFERENCES Botanical_Garden(location),
+    FOREIGN KEY (name) REFERENCES Donor_table(name),
+    );
+
+INSERT INTO Donor_table (name) VALUES
 ('University of Leiden'),
 ('Johnson and Johnson'),
 ('Bio Labs Leiden'),
@@ -26,4 +36,3 @@ INSERT INTO DonorTable (name) VALUES
 ('Jakarta Hotel Stichting'),
 ('NL Bloeit'),
 ('STIHL NL');
-

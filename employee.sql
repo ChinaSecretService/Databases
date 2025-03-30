@@ -125,3 +125,22 @@ VALUES
 (989101112, Junior),
 (101213151, Junior),
 
+INSERT INTO Researchers (ssn, season, university)
+VALUES
+(212324262, 'Winter', 'Leiden University'),
+(323435364, 'Summer', 'Delft University of Technology'),
+(434546484, 'Winter', 'University of Amsterdam'),
+(545657576, 'Summer', 'Leiden University'),
+(656768696, 'Winter', 'Delft University of Technology'),
+(767879808, 'Summer', 'University of Amsterdam'),
+(878990929, 'Winter', 'Leiden University'),
+(989101223, 'Summer', 'Utrecht University'),
+(101112313, 'Winter', 'Delft University of Technology'),
+(212223334, 'Summer', 'University of Amsterdam'),
+(323334456, 'Winter', 'Leiden University'),
+(434546576, 'Summer', 'Utrecht University'),
+(545657697, 'Winter', 'University of Amsterdam'),
+(656768718, 'Summer', 'Delft University of Technology'),
+(767879838, 'Winter', 'Leiden University'),
+(878990949, 'Summer', 'Utrecht University');
+

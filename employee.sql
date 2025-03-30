@@ -1,6 +1,8 @@
 sqlite> PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS Employees;
+DROP TABLE IF EXISTS Gardeners;
+DROP TABLE IF EXISTS Researchs;
     
 CREATE TABLE Employees (
     ssn INTEGER,

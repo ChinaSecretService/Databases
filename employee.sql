@@ -1,3 +1,5 @@
+sqlite> PRAGMA foreign_keys = ON;
+
 DROP TABLE IF EXISTS Employees;
     
 CREATE TABLE Employees (
@@ -12,10 +14,11 @@ CREATE TABLE Employees (
 CREATE TABLE Researchers (
     season TEXT,
     university TEXT,
-    )
+    FOREIGN KEY(season) REFERENCES Employees(ssn)
 
 CREATE TABLE Gardeners (
     seniority TEXT,
+    FOREIGN KEY(seniority) REFERENCES Employees(ssn)
     )
 
 INSERT INTO Employees (ssn, name, age, salary, e_mail)

@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS Employees;
 DROP TABLE IF EXISTS Gardeners;
 DROP TABLE IF EXISTS Researchers;
 DROP TABLE IF EXISTS Training;
+DROP TABLE IF EXISTS Works_in;
 
 CREATE TABLE Donor_table(
     name    TEXT,
@@ -75,6 +76,12 @@ CREATE TABLE Training(
     FOREIGN KEY (trainee_ssn) REFERENCES Gardeners(ssn)
 );
 
+CREATE TABLE Works_in(
+    ssn INTEGER,
+    theme TEXT,
+    FOREIGN KEY(ssn) REFERENCES Employees(ssn)
+);
+
 INSERT INTO Employees (ssn, name, age, salary, e_mail)
 VALUES
 (111111111, 'Angela Van Delft', 20, 95000, 'angela.vandelft@delftbgarden.nl'),
@@ -128,7 +135,60 @@ VALUES
 (767879838, 'Sansa Stark', 29, 61000, 'sansa.stark@delftbgarden.nl'),
 (878990949, 'Jorah Mormont', 40, 73000, 'jorah.mormont@amsterdambgarden.nl');
 
-IINSERT INTO Gardeners (ssn, seniority):
+INSERT INTO Works_in (ssn, theme)
+VALUES
+(111111111, 'Bonsai Yard'),
+(123456789, 'Orchid Pavilion'),
+(987654321, 'Medicinal Plant Section'),
+(567890123, 'Clusius Garden'),
+(654321987, 'Winter Garden'),
+(345678901, 'Moss & Lichen Niche'),
+(112233445, 'Arboretum'),
+(998877665, 'Rose Garden'),
+(334455667, 'Experimental Greenhouse'),
+(556677889, 'Systematic Garden'),
+(667788990, 'Sand Dune Garden'),
+(223344556, 'Observatory Garden'),
+(778899001, 'Japanese Garden'),
+(889900112, 'Tropical glasshouses'),
+(990011223, 'Vertical Garden'),
+(101112131, 'Palm House'),
+(212223242, 'Edible Garden'),
+(323334353, 'Rare Species Bed'),
+(434445464, 'Pollinator Meadow'),
+(545556575, 'Geophyte garden and cool house'),
+(656667687, 'Woodland Edge'),
+(767778798, 'Alpine Garden'),
+(878889909, 'Aquatic Plants Zone'),
+(989900112, 'Von Siebold Memorial Garden'),
+(101213141, 'Chinese Herb Garden'),
+(212324253, 'Tropical glasshouses'),
+(323435363, 'Succulent Dome'),
+(434546474, 'Fern Garden'),
+(545657575, 'Bamboo Walk'),
+(656768687, 'Permaculture Plot'),
+(767879797, 'Mediterranean Zone'),
+(878990909, 'Winter Garden'),
+(989101112, 'Aquatic Plants Zone'),
+(101213151, 'Observatory Garden'),
+(212324262, 'Japanese Garden'),
+(323435364, 'Palm House'),
+(434546484, 'Medicinal Plant Section'),
+(545657576, 'Orchid Pavilion'),
+(656768696, 'Systematic Garden'),
+(767879808, 'Edible Garden'),
+(878990929, 'Geophyte garden and cool house'),
+(989101223, 'Pollinator Meadow'),
+(101112313, 'Moss & Lichen Niche'),
+(212223334, 'Experimental Greenhouse'),
+(323334456, 'Rose Garden'),
+(434546576, 'Clusius Garden'),
+(545657697, 'Bamboo Walk'),
+(656768718, 'Von Siebold Memorial Garden'),
+(767879838, 'Sand Dune Garden'),
+(878990949, 'Rare Species Bed');
+
+INSERT INTO Gardeners (ssn, seniority):
 VALUES
 (111111111, 'Senior'),
 (123456789, 'Senior'),
@@ -207,6 +267,29 @@ INSERT INTO Donor_table (name) VALUES
 ('NL Bloeit'),
 ('STIHL NL');
 
+INSERT INTO Recieves_donation (location, name, amount)
+VALUES
+('Leiden', 'University of Leiden', 17000),
+('Amsterdam', 'Johnson and Johnson', 16000),
+('Leiden', 'Bio Labs Leiden', 5000),
+('Leiden', 'Botanic Gardens Conservation International (BGCI)', 5000),
+('Leiden', 'Stichting Vrienden van de Leidse Hortus', 7000),
+('Amsterdam', 'Gravin van Bylandt Stichting', 4500),
+('Delft', 'Van der Mandele Stichting', 8000),
+('Leiden', 'Provincie Zuid-Holland', 5500),
+('Delft', 'BPD Cultuurfonds', 7000),
+('Amsterdam', 'Fiskars NL', 4000),
+('Amsterdam', 'Gardena NL', 6000),
+('Delft', 'Husqvarna NL', 5000),
+('Leiden', 'Upperbloom', 3000),
+('Leiden', 'Plantsome', 4000),
+('Leiden', 'Garden Connect', 1500),
+('Amsterdam', 'Grow Dutch', 3000),
+('Delft', 'Dutch Museum Association', 6000),
+('Leiden', 'Jakarta Hotel Stichting', 10000),
+('Amsterdam', 'NL Bloeit', 5500),
+('Leiden', 'STIHL NL', 2000);
+    
 INSERT INTO Botanical_garden VALUES ('Leiden');
 INSERT INTO Botanical_garden VALUES ('Amsterdam');
 INSERT INTO Botanical_garden VALUES ('Delft');

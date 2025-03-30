@@ -15,7 +15,7 @@ CREATE TABLE Researchers (
     ssn INTEGER,
     season TEXT,
     university TEXT,
-    FOREIGN KEY(season) REFERENCES Employees(ssn)
+    FOREIGN KEY(ssn) REFERENCES Employees(ssn)
 
 CREATE TABLE Gardeners (
     ssn INTEGER,

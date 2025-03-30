@@ -5,6 +5,18 @@ CREATE TABLE DonorTable (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL
 );
+DROP TABLE IF EXISTS Plant;
+DROP TABLE IF EXISTS Botanical_garden;
+DROP TABLE IF EXISTS Sub-garden;
+
+CREATE TABLE Plant(
+    p_id       INTEGER,
+    species    TEXT,
+    o_country  TEXT,
+    blooming   INTEGER,
+    sub-garden TEXT
+    PRIMARY KEY(p_id)
+);
 
 INSERT INTO DonorTable (name) VALUES
 ('University of Leiden'),

@@ -1,12 +1,7 @@
---- DO NOT WORRY ABOUT UNDERSTANDING THE CONTENT OF THIS FILE YET! This will be explained iteratively starting Week 3!
---- Make output beautiful
-.header on
-.mode column
-.nullvalue 'NULL'
-
-
+DROP TABLE IF EXISTS Employees;
+    
 --- Create Schema
-CREATE TABLE employees (
+CREATE TABLE Employees (
     ssn CHAR(9) PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     age INT CHECK (age > 15),

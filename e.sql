@@ -3,6 +3,7 @@ sqlite> PRAGMA foreign_keys = ON;
 DROP TABLE IF EXISTS Employees;
 DROP TABLE IF EXISTS Gardeners;
 DROP TABLE IF EXISTS Researchers;
+DROP TABLE IF EXISTS Training;
     
 CREATE TABLE Employees (
     ssn INTEGER,
@@ -24,6 +25,14 @@ CREATE TABLE Gardeners (
     ssn INTEGER,
     seniority TEXT,
     FOREIGN KEY(ssn) REFERENCES Employees(ssn)
+);
+
+CREATE TABLE Training(
+    trainer_ssn INTEGER,
+    trainee_ssn INTEGER,
+    PRIMARY KEY (trainer_ssn,trainee_ssn),
+    FOREIGN KEY (trainer_ssn) REFERENCES Gardeners(ssn),
+    FOREIGN KEY (trainee_ssn) REFERENCES Gardeners(ssn)
 );
 
 INSERT INTO Employees (ssn, name, age, salary, e_mail)
@@ -78,6 +87,43 @@ VALUES
 (656768718, 'Jaime Lannister', 45, 87000, 'jaime.lannister@leidenbgarden.nl'),
 (767879838, 'Sansa Stark', 29, 61000, 'sansa.stark@delftbgarden.nl'),
 (878990949, 'Jorah Mormont', 40, 73000, 'jorah.mormont@amsterdambgarden.nl');
+
+INSERT INTO Gardeners (ssn, seniority):
+VALUES
+(111111111, Senior),
+(123456789, Senior),
+(987654321, Senior),
+(567890123, Senior),
+(654321987, Senior),
+(345678901, Senior),
+(112233445, Senior),
+(998877665, Senior),
+(334455667, Senior),
+(556677889, Senior),
+(667788990, Senior),
+(223344556, Senior),
+(778899001, Senior),
+(889900112, Senior),
+(990011223, Junior),
+(101112131, Junior),
+(212223242, Junior),
+(323334353, Junior),
+(434445464, Junior),
+(545556575, Junior),
+(656667687, Junior),
+(767778798, Junior),
+(878889909, Junior),
+(989900112, Junior),
+(101213141, Junior),
+(212324253, Junior),
+(323435363, Junior),
+(434546474, Junior),
+(545657575, Junior),
+(656768687, Junior),
+(767879797, Junior),
+(878990909, Junior),
+(989101112, Junior),
+(101213151, Junior),
 
 INSERT INTO Researchers (ssn, season, university)
 VALUES

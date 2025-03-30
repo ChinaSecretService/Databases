@@ -12,7 +12,7 @@ CREATE TABLE Employees (
 
 
 
-INSERT INTO employees (ssn, name, age, salary, e_mail)
+INSERT INTO Employees (ssn, name, age, salary, e_mail)
 VALUES
 ('111111111', 'Angela Van Delft', 20, 95000.00, 'angela.vandelft@delftbgarden.nl'),
 ('123456789', 'Walter White', 50, 85000.00, 'walter.white@leidenbgarden.nl'),

@@ -1,15 +1,62 @@
 sqlite> PRAGMA foreign_keys = ON;
 
-DROP TABLE IF EXISTS Donor_table;
-DROP TABLE IF EXISTS Recieves_donation;
-DROP TABLE IF EXISTS Plant;
 DROP TABLE IF EXISTS Botanical_garden;
 DROP TABLE IF EXISTS Sub_garden;
 DROP TABLE IF EXISTS Employees;
-DROP TABLE IF EXISTS Gardeners;
 DROP TABLE IF EXISTS Researchers;
+DROP TABLE IF EXISTS Gardeners;
 DROP TABLE IF EXISTS Training;
 DROP TABLE IF EXISTS Works_in;
+DROP TABLE IF EXISTS Donor_table;
+DROP TABLE IF EXISTS Recieves_donation;
+DROP TABLE IF EXISTS Plant;
+
+CREATE TABLE Botanical_garden(
+    loc        TEXT
+    PRIMARY KEY(loc)
+);
+
+CREATE TABLE Sub_garden(
+    loc        TEXT
+    theme      TEXT
+    FOREIGN KEY (loc) REFERENCES Botanical_garden(loc) ON DELETE CASCADE
+);
+
+CREATE TABLE Employees (
+    ssn INTEGER,
+    name TEXT,
+    age INTEGER,
+    salary INTEGER,
+    e_mail TEXT,
+    PRIMARY KEY(ssn),
+);
+
+CREATE TABLE Researchers (
+    ssn INTEGER,
+    season TEXT,
+    university TEXT,
+    FOREIGN KEY(ssn) REFERENCES Employees(ssn)
+);
+
+CREATE TABLE Gardeners (
+    ssn INTEGER,
+    seniority TEXT,
+    FOREIGN KEY(ssn) REFERENCES Employees(ssn)
+);
+
+CREATE TABLE Training(
+    trainer_ssn INTEGER,
+    trainee_ssn INTEGER,
+    PRIMARY KEY (trainer_ssn,trainee_ssn),
+    FOREIGN KEY (trainer_ssn) REFERENCES Gardeners(ssn),
+    FOREIGN KEY (trainee_ssn) REFERENCES Gardeners(ssn)
+);
+
+CREATE TABLE Works_in(
+    ssn INTEGER,
+    theme TEXT,
+    FOREIGN KEY(ssn) REFERENCES Employees(ssn)
+);
 
 CREATE TABLE Donor_table(
     name    TEXT,
@@ -34,53 +81,43 @@ CREATE TABLE Plant(
     PRIMARY KEY(p_id)
 );
 
-CREATE TABLE Botanical_garden(
-    loc        TEXT
-    PRIMARY KEY(loc)
-);
+INSERT INTO Botanical_garden VALUES ('Leiden');
+INSERT INTO Botanical_garden VALUES ('Amsterdam');
+INSERT INTO Botanical_garden VALUES ('Delft');
+INSERT INTO Botanical_garden VALUES ('Utrecht');
+INSERT INTO Botanical_garden VALUES ('Nijmegen');
 
-CREATE TABLE Sub_garden(
-    loc        TEXT
-    theme      TEXT
-    FOREIGN KEY (loc) REFERENCES Botanical_garden(loc) ON DELETE CASCADE
-);
-
-CREATE TABLE Employees (
-    ssn INTEGER,
-    name TEXT,
-    age INTEGER,
-    salary INTEGER,
-    e_mail TEXT,
-    PRIMARY KEY(ssn),
-);
-
-CREATE TABLE Gardeners (
-    ssn INTEGER,
-    seniority TEXT,
-    FOREIGN KEY(ssn) REFERENCES Employees(ssn)
-);
-
-
-CREATE TABLE Researchers (
-    ssn INTEGER,
-    season TEXT,
-    university TEXT,
-    FOREIGN KEY(ssn) REFERENCES Employees(ssn)
-);
-
-CREATE TABLE Training(
-    trainer_ssn INTEGER,
-    trainee_ssn INTEGER,
-    PRIMARY KEY (trainer_ssn,trainee_ssn),
-    FOREIGN KEY (trainer_ssn) REFERENCES Gardeners(ssn),
-    FOREIGN KEY (trainee_ssn) REFERENCES Gardeners(ssn)
-);
-
-CREATE TABLE Works_in(
-    ssn INTEGER,
-    theme TEXT,
-    FOREIGN KEY(ssn) REFERENCES Employees(ssn)
-);
+INSERT INTO Sub_garden VALUES ('Leiden','Winter Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Clusius Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Orangery');
+INSERT INTO Sub_garden VALUES ('Leiden','Tropical glasshouses');
+INSERT INTO Sub_garden VALUES ('Leiden','Geophyte garden and cool house');
+INSERT INTO Sub_garden VALUES ('Leiden','Rose Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Systematic Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Von Siebold Memorial Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Arboretum');
+INSERT INTO Sub_garden VALUES ('Leiden','Chinese Herb Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Fern Garden');
+INSERT INTO Sub_garden VALUES ('Leiden','Observatory Garden');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Medicinal Plant Section');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Succulent Dome');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Japanese Garden');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Aquatic Plants Zone');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Palm House');
+INSERT INTO Sub_garden VALUES ('Amsterdam','Woodland Edge');
+INSERT INTO Sub_garden VALUES ('Utrecht','Orchid Pavilion');
+INSERT INTO Sub_garden VALUES ('Utrecht','Permaculture Plot');
+INSERT INTO Sub_garden VALUES ('Utrecht','Edible Garden');
+INSERT INTO Sub_garden VALUES ('Utrecht','Sand Dune Garden');
+INSERT INTO Sub_garden VALUES ('Utrecht','Vertical Garden');
+INSERT INTO Sub_garden VALUES ('Utrecht','Mediterranean Zone');
+INSERT INTO Sub_garden VALUES ('Delft','Alpine Garden');
+INSERT INTO Sub_garden VALUES ('Delft','Experimental Greenhouse');
+INSERT INTO Sub_garden VALUES ('Delft','Pollinator Meadow');
+INSERT INTO Sub_garden VALUES ('Delft','Rare Species Bed');
+INSERT INTO Sub_garden VALUES ('Nigmegen','Bonsai Yard');
+INSERT INTO Sub_garden VALUES ('Nijmegen','Moss & Lichen Niche');
+INSERT INTO Sub_garden VALUES ('Nijmegen','Bamboo Walk');
 
 INSERT INTO Employees (ssn, name, age, salary, e_mail)
 VALUES
@@ -135,6 +172,80 @@ VALUES
 (767879838, 'Sansa Stark', 29, 61000, 'sansa.stark@delftbgarden.nl'),
 (878990949, 'Jorah Mormont', 40, 73000, 'jorah.mormont@amsterdambgarden.nl');
 
+INSERT INTO Researchers (ssn, season, university)
+VALUES
+(212324262, 'Winter', 'Leiden University'),
+(323435364, 'Summer', 'Delft University of Technology'),
+(434546484, 'Winter', 'University of Amsterdam'),
+(545657576, 'Summer', 'Leiden University'),
+(656768696, 'Winter', 'Delft University of Technology'),
+(767879808, 'Summer', 'University of Amsterdam'),
+(878990929, 'Winter', 'Leiden University'),
+(989101223, 'Summer', 'Utrecht University'),
+(101112313, 'Winter', 'Delft University of Technology'),
+(212223334, 'Summer', 'University of Amsterdam'),
+(323334456, 'Winter', 'Leiden University'),
+(434546576, 'Summer', 'Utrecht University'),
+(545657697, 'Winter', 'University of Amsterdam'),
+(656768718, 'Summer', 'Delft University of Technology'),
+(767879838, 'Winter', 'Leiden University'),
+(878990949, 'Summer', 'Utrecht University');
+
+INSERT INTO Gardeners (ssn, seniority):
+VALUES
+(111111111, 'Senior'),
+(123456789, 'Senior'),
+(987654321, 'Senior'),
+(567890123, 'Senior'),
+(654321987, 'Senior'),
+(345678901, 'Senior'),
+(112233445, 'Senior'),
+(998877665, 'Senior'),
+(334455667, 'Senior'),
+(556677889, 'Senior'),
+(667788990, 'Senior'),
+(223344556, 'Senior'),
+(778899001, 'Senior'),
+(889900112, 'Senior'),
+(990011223, 'Junior'),
+(101112131, 'Junior'),
+(212223242, 'Junior'),
+(323334353, 'Junior'),
+(434445464, 'Junior'),
+(545556575, 'Junior'),
+(656667687, 'Junior'),
+(767778798, 'Junior'),
+(878889909, 'Junior'),
+(989900112, 'Junior'),
+(101213141, 'Junior'),
+(212324253, 'Junior'),
+(323435363, 'Junior'),
+(434546474, 'Junior'),
+(545657575, 'Junior'),
+(656768687, 'Junior'),
+(767879797, 'Junior'),
+(878990909, 'Junior'),
+(989101112, 'Junior'),
+(101213151, 'Junior');
+
+INSERT INTO Training (trainer_ssn, trainee_ssn)
+VALUES
+(334455667, 767879797),
+(989101112, 878889909),
+(778899001, 990011223),
+(101213151, 656768687),
+(223344556, 101213141),
+(345678901, 434546474),
+(112233445, 556677889),
+(989900112, 654321987),
+(334455667, 323334353),
+(111111111, 101112131),
+(667788990, 767778798),
+(323435363, 101112131),
+(567890123, 889900112),
+(889900112, 212223242),
+(990011223, 778899001);
+
 INSERT INTO Works_in (ssn, theme)
 VALUES
 (111111111, 'Bonsai Yard'),
@@ -188,63 +299,6 @@ VALUES
 (767879838, 'Sand Dune Garden'),
 (878990949, 'Rare Species Bed');
 
-INSERT INTO Gardeners (ssn, seniority):
-VALUES
-(111111111, 'Senior'),
-(123456789, 'Senior'),
-(987654321, 'Senior'),
-(567890123, 'Senior'),
-(654321987, 'Senior'),
-(345678901, 'Senior'),
-(112233445, 'Senior'),
-(998877665, 'Senior'),
-(334455667, 'Senior'),
-(556677889, 'Senior'),
-(667788990, 'Senior'),
-(223344556, 'Senior'),
-(778899001, 'Senior'),
-(889900112, 'Senior'),
-(990011223, 'Junior'),
-(101112131, 'Junior'),
-(212223242, 'Junior'),
-(323334353, 'Junior'),
-(434445464, 'Junior'),
-(545556575, 'Junior'),
-(656667687, 'Junior'),
-(767778798, 'Junior'),
-(878889909, 'Junior'),
-(989900112, 'Junior'),
-(101213141, 'Junior'),
-(212324253, 'Junior'),
-(323435363, 'Junior'),
-(434546474, 'Junior'),
-(545657575, 'Junior'),
-(656768687, 'Junior'),
-(767879797, 'Junior'),
-(878990909, 'Junior'),
-(989101112, 'Junior'),
-(101213151, 'Junior'),
-
-INSERT INTO Researchers (ssn, season, university)
-VALUES
-(212324262, 'Winter', 'Leiden University'),
-(323435364, 'Summer', 'Delft University of Technology'),
-(434546484, 'Winter', 'University of Amsterdam'),
-(545657576, 'Summer', 'Leiden University'),
-(656768696, 'Winter', 'Delft University of Technology'),
-(767879808, 'Summer', 'University of Amsterdam'),
-(878990929, 'Winter', 'Leiden University'),
-(989101223, 'Summer', 'Utrecht University'),
-(101112313, 'Winter', 'Delft University of Technology'),
-(212223334, 'Summer', 'University of Amsterdam'),
-(323334456, 'Winter', 'Leiden University'),
-(434546576, 'Summer', 'Utrecht University'),
-(545657697, 'Winter', 'University of Amsterdam'),
-(656768718, 'Summer', 'Delft University of Technology'),
-(767879838, 'Winter', 'Leiden University'),
-(878990949, 'Summer', 'Utrecht University');
-
-
 INSERT INTO Donor_table (name) VALUES
 ('University of Leiden'),
 ('Johnson and Johnson'),
@@ -269,62 +323,26 @@ INSERT INTO Donor_table (name) VALUES
 
 INSERT INTO Recieves_donation (location, name, amount)
 VALUES
-('Leiden', 'University of Leiden', 17000),
-('Amsterdam', 'Johnson and Johnson', 16000),
-('Leiden', 'Bio Labs Leiden', 5000),
-('Leiden', 'Botanic Gardens Conservation International (BGCI)', 5000),
-('Leiden', 'Stichting Vrienden van de Leidse Hortus', 7000),
-('Amsterdam', 'Gravin van Bylandt Stichting', 4500),
+('Leiden', 'University of Leiden', 50000),
+('Amsterdam', 'Johnson and Johnson', 20000),
+('Leiden', 'Bio Labs Leiden', 10000),
+('Utrecht', 'Botanic Gardens Conservation International (BGCI)', 10000),
+('Leiden', 'Stichting Vrienden van de Leidse Hortus', 12000),
+('Amsterdam', 'Gravin van Bylandt Stichting', 10000),
 ('Delft', 'Van der Mandele Stichting', 8000),
-('Leiden', 'Provincie Zuid-Holland', 5500),
+('Leiden', 'Provincie Zuid-Holland', 10000),
 ('Delft', 'BPD Cultuurfonds', 7000),
-('Amsterdam', 'Fiskars NL', 4000),
-('Amsterdam', 'Gardena NL', 6000),
+('Amsterdam', 'Fiskars NL', 5000),
+('Utrecht', 'Gardena NL', 5000),
 ('Delft', 'Husqvarna NL', 5000),
-('Leiden', 'Upperbloom', 3000),
-('Leiden', 'Plantsome', 4000),
-('Leiden', 'Garden Connect', 1500),
+('Leiden', 'Upperbloom', 5000),
+('Leiden', 'Plantsome', 5000),
+('Leiden', 'Garden Connect', 2000),
 ('Amsterdam', 'Grow Dutch', 3000),
-('Delft', 'Dutch Museum Association', 6000),
-('Leiden', 'Jakarta Hotel Stichting', 10000),
-('Amsterdam', 'NL Bloeit', 5500),
-('Leiden', 'STIHL NL', 2000);
-    
-INSERT INTO Botanical_garden VALUES ('Leiden');
-INSERT INTO Botanical_garden VALUES ('Amsterdam');
-INSERT INTO Botanical_garden VALUES ('Delft');
-
-INSERT INTO Sub_garden VALUES ('Leiden','Winter Garden');
-INSERT INTO Sub_garden VALUES ('Leiden','Clusius Garden');
-INSERT INTO Sub_garden VALUES ('Leiden','Orangery');
-INSERT INTO Sub_garden VALUES ('Leiden','Tropical glasshouses');
-INSERT INTO Sub_garden VALUES ('Leiden','Geophyte garden and cool house');
-INSERT INTO Sub_garden VALUES ('Leiden','Rose Garden');
-INSERT INTO Sub_garden VALUES ('Leiden','Systematic Garden');
-INSERT INTO Sub_garden VALUES ('Leiden','Von Siebold Memorial Garden');
-INSERT INTO Sub_garden VALUES ('Leiden','Arboretum');
-INSERT INTO Sub_garden VALUES ('Leiden','Chinese Herb Garden');
-INSERT INTO Sub_garden VALUES ('Leiden','Fern Garden');
-INSERT INTO Sub_garden VALUES ('Leiden','Observatory Garden');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Medicinal Plant Section');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Succulent Dome');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Japanese Garden');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Aquatic Plants Zone');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Palm House');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Woodland Edge');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Orchid Pavilion');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Permaculture Plot');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Edible Garden');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Sand Dune Garden');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Vertical Garden');
-INSERT INTO Sub_garden VALUES ('Amsterdam','Mediterranean Zone');
-INSERT INTO Sub_garden VALUES ('Delft','Alpine Garden');
-INSERT INTO Sub_garden VALUES ('Delft','Experimental Greenhouse');
-INSERT INTO Sub_garden VALUES ('Delft','Pollinator Meadow');
-INSERT INTO Sub_garden VALUES ('Delft','Rare Species Bed');
-INSERT INTO Sub_garden VALUES ('Delft','Bonsai Yard');
-INSERT INTO Sub_garden VALUES ('Delft','Moss & Lichen Niche');
-INSERT INTO Sub_garden VALUES ('Delft','Bamboo Walk');
+('Delft', 'Dutch Museum Association', 10000),
+('Leiden', 'Jakarta Hotel Stichting', 15000),
+('Amsterdam', 'NL Bloeit', 8000),
+('Utrecht', 'STIHL NL', 4000);
 
 INSERT INTO Plant (p_id, species, o_country, blooming, sub_garden) VALUES
 (100001, 'Ficus lyrata', 'Mexico', NULL, 'Winter Garden'),
